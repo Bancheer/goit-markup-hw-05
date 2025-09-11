@@ -90,9 +90,15 @@ body {
 .logo {
   font-family: "Raleway", sans-serif;
   font-weight: 800;
-  font-size: 18px;
+  font-size: 16px;
   letter-spacing: 0.03em;
-  color: var(--text);
+  .logo {
+    color: var(--text);
+  }
+  .logo span,
+  .logo-accent {
+    color: var(--accent);
+  }
 }
 .logo span,
 .logo-accent {
@@ -146,25 +152,50 @@ body {
 
 /* ========== Hero ========== */
 .hero {
-  background: var(--text);
   color: #fff;
   text-align: center;
-  padding: 188px 0;
+
+  /* высота: сохраняем соотношение 1440:600 (2.4) и ограничиваем 600px */
+  height: min(41.6667vw, 600px); /* 600/1440 = 0.416667 = 41.6667vw */
+  display: grid;
+  place-items: center;
+
+  background-color: var(--text); /* запасной цвет */
+  background-image: linear-gradient(
+      rgba(46, 47, 66, 0.7),
+      rgba(46, 47, 66, 0.7)
+    ),
+    url("../images/hero-image.jpg"); /* подставь свой путь, если другой */
+  background-size: cover; /* как в фигме — без “письма-полос” */
+  background-position: center; /* по центру */
+  background-repeat: no-repeat;
+}
+
+/* немного “дышания” на очень узких экранах */
+@media (max-width: 600px) {
+  .hero {
+    height: 360px;
+  } /* можешь поставить 320–420 по вкусу */
+}
+
+/* контент по центру */
+.hero .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
 }
 .hero__title {
-  font-size: 56px;
-  line-height: 1.07;
-  max-width: 600px;
-  margin: 0 auto 48px;
+  margin: 0;
 }
+
 .hero__btn {
   padding: 16px 32px;
   border: none;
   border-radius: 4px;
   background: var(--accent);
   color: #fff;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color 250ms ease, box-shadow 250ms ease;
 }
 .hero__btn:hover,
 .hero__btn:focus {
@@ -252,30 +283,17 @@ body {
 .team .card {
   flex: 0 0 calc((100% - 72px) / 4);
   background: #fff;
-  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-.team .card:hover,
-.team .card:focus-within {
-  box-shadow: var(--shadow-1);
-}
-.card__body {
-  padding: 32px 16px;
-  border: 1px solid var(--line);
-  border-top: none;
-}
-.card__title {
-  margin: 32px 0 8px;
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 1.2;
-  color: var(--text);
-}
-.card__tag {
-  color: var(--muted);
-  line-height: 1.5;
+.team .card__body {
   text-align: center;
 }
-
+.team .card__title {
+  margin-top: 32px;
+  margin-bottom: 8px;
+}
+.team .card__tag {
+  color: var(--muted);
+}
 /* Team social */
 .social {
   display: flex;
@@ -288,11 +306,11 @@ body {
   height: 40px;
   border-radius: 50%;
   background: var(--accent);
-  color: #fff;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  color: #fff;
+  transition: background-color 250ms ease;
 }
 .social__link:hover,
 .social__link:focus {
@@ -429,7 +447,7 @@ body {
   max-width: 264px;
 }
 .footer__logo {
-  color: var(--accent);
+  color: #f4f4fd;
   display: inline-block;
   margin-bottom: 16px;
 }
@@ -697,3 +715,12 @@ address {
   }
 }
 
+@media (min-resolution: 192dpi), (min-resolution: 2dppx) {
+  .hero {
+    background-image: linear-gradient(
+        rgba(46, 47, 66, 0.7),
+        rgba(46, 47, 66, 0.7)
+      ),
+      url("../images/hero-image.jpg");
+  }
+}
