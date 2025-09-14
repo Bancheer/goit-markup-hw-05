@@ -92,14 +92,9 @@ body {
   font-weight: 800;
   font-size: 16px;
   letter-spacing: 0.03em;
-  .logo {
-    color: var(--text);
-  }
-  .logo span,
-  .logo-accent {
-    color: var(--accent);
-  }
+  color: var(--text);
 }
+
 .logo span,
 .logo-accent {
   color: var(--accent);
@@ -280,7 +275,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 24px;
-  background-color: #F4F4FD; /* ← фон для всей секции */
+  background-color: #f4f4fd; /* ← фон для всей секции */
   padding: 120px 0;
 }
 .team .card {
