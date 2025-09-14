@@ -46,6 +46,16 @@ a {
   --line: #e7e9fc;
   --shadow-1: 0 1px 6px rgba(46, 47, 66, 0.08), 0 1px 1px rgba(46, 47, 66, 0.16),
     0 2px 1px rgba(46, 47, 66, 0.08);
+  --s-8: 8px;
+  --s-12: 12px;
+  --s-16: 16px;
+  --s-24: 24px;
+  --s-32: 32px;
+  --s-40: 40px;
+  --s-48: 48px;
+  --s-72: 72px;
+  --s-100: 100px; /* у тебя так в футере */
+  --s-120: 120px;
 }
 
 /* ========== Base ========== */
@@ -73,7 +83,7 @@ body {
   margin: 0 auto;
 }
 .section {
-  padding: 120px 0;
+  padding: var(--s-120) 0;
 }
 
 /* ========== Header ========== */
@@ -178,10 +188,11 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 48px;
+  gap: var(--s-48);
 }
 .hero__title {
   margin: 0;
+  line-height: 1.07;
   font-size: 56px;
 }
 
@@ -204,14 +215,14 @@ body {
   font-size: 36px;
   line-height: 1.11;
   text-align: center;
-  margin: 0 0 72px;
+  margin: 0 0 var(--s-72);
 }
 
 /* ========== Benefits ========== */
 .benefits__list {
   display: flex;
   flex-wrap: wrap;
-  gap: 24px;
+  gap: var(--s-24);
 }
 .benefits__item {
   flex: 0 0 calc((100% - 72px) / 4);
@@ -221,7 +232,7 @@ body {
   border: 1px solid var(--line);
   border-radius: 4px;
   height: 112px;
-  margin-bottom: 8px;
+  margin-bottom: var(--s-8);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -231,7 +242,7 @@ body {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 .benefits__title {
-  margin-bottom: 8px;
+  margin-bottom: var(--s-8);
   font-weight: 500;
   font-size: 20px;
   line-height: 1.2;
@@ -246,7 +257,7 @@ body {
 .cards {
   display: flex;
   flex-wrap: wrap;
-  gap: 24px;
+  gap: var(--s-24);
 }
 .cards > li {
   flex: 0 0 calc((100% - 48px) / 3);
@@ -276,28 +287,37 @@ body {
   flex-wrap: wrap;
   gap: 24px;
   background-color: #f4f4fd; /* ← фон для всей секции */
-  padding: 120px 0;
+  padding: var(--s-120) 0;
 }
 .team .card {
-  flex: 0 0 calc((100% - 72px) / 4);
+  flex: 0 0 264px;
   background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 .team .card__body {
   text-align: center;
 }
 .team .card__title {
-  margin-top: 32px;
-  margin-bottom: 8px;
+  margin: 0 0 8px; /* убираем лишний margin-top, чтобы карточка стала ниже */
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.2;
+  color: var(--text);
 }
 .team .card__tag {
+  margin: 0;
   color: var(--muted);
+  line-height: 1.5;
 }
 /* Team social */
 .social {
   display: flex;
-  gap: 24px;
+  gap: var(--s-24);
   justify-content: center;
-  margin-top: 8px;
+  margin-top: var(--s-8);
 }
 .social__link {
   width: 40px;
@@ -319,7 +339,7 @@ body {
 .customers__list {
   display: flex;
   flex-wrap: wrap;
-  gap: 24px;
+  gap: var(--s-24);
   justify-content: center;
 }
 .customers__item {
@@ -343,12 +363,29 @@ body {
   border-color: var(--accent);
 }
 
+.customers__link {
+  color: #8e8f99;             /* цвет иконки/текста */
+  border-color: currentColor;  /* рамка = текущему цвету */
+}
+
+/* чтобы логотипы подхватывали цвет */
+.customers__link svg {
+  fill: currentColor;
+}
+
+/* hover остаётся как у тебя: меняется и цвет, и рамка */
+.customers__link:hover,
+.customers__link:focus {
+  color: var(--accent);
+  border-color: currentColor;
+}
+
 /* ========== Portfolio: Filters ========== */
 .filters {
   display: flex;
   justify-content: center;
-  gap: 24px;
-  margin-bottom: 72px;
+  gap: var(--s-24);
+  margin-bottom: var(--s-72);
 }
 .btn {
   font: inherit;
@@ -378,7 +415,7 @@ body {
 .projects {
   display: flex;
   flex-wrap: wrap;
-  gap: 24px;
+  gap: var(--s-24);
 }
 .project-card {
   flex: 0 0 calc((100% - 48px) / 3);
@@ -414,7 +451,7 @@ body {
 }
 
 .project-card__body {
-  padding: 32px 16px;
+  padding: var(--s-32) var(--s-16);
   border: 1px solid var(--line);
   border-top: none;
 }
@@ -434,7 +471,7 @@ body {
 .footer {
   background: #2e2f42;
   color: #f4f4fd;
-  padding: 100px 0;
+  padding: var(--s-100) 0;
 }
 .footer__wrap {
   display: flex;
@@ -459,12 +496,12 @@ body {
 }
 .footer__social-title {
   font-weight: 500;
-  margin-bottom: 16px;
+  margin-bottom: var(--s-16);
   color: #fff;
 }
 .footer-social {
   display: flex;
-  gap: 16px;
+  gap: var(--s-16);
 }
 .footer-social__link {
   background: rgba(255, 255, 255, 0.1);
@@ -682,11 +719,11 @@ address {
 }
 @media (max-width: 600px) {
   .nav {
-    margin-left: 0;
+    margin-left: 76px;
   }
   .nav__list,
   .contacts {
-    gap: 16px;
+    gap: var(--s-40);
   }
   .hero {
     padding: 120px 0;
@@ -720,5 +757,52 @@ address {
         rgba(46, 47, 66, 0.7)
       ),
       url("../images/hero-image.jpg");
+  }
+}
+
+/* === OUR TEAM: фикс сетки и рамки карточек === */
+
+/* секция оставляем как фон + отступы */
+.team {
+  background-color: #f4f4fd;
+  padding: 120px 0;
+}
+
+/* СЕТКА: делаем флекс именно для списка карточек внутри team.
+   Исключаем список соц.иконок (.social), чтобы его не задеть. */
+.team .list:not(.social) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-24);
+}
+
+/* КАРТОЧКА: единый фрейм с рамкой, чтобы ширина совпадала с изображением */
+.team .card {
+  box-sizing: border-box;
+}
+
+/* картинка не «прыгает» и заполняет ширину фрейма */
+.team .card > img {
+  display: block;
+  width: 264px; /* ширина изображения как в фигме */
+  height: 260px; /* высота как в фигме */
+  object-fit: cover;
+}
+
+/* тело карточки — без собственной рамки */
+.team .card__body {
+  text-align: center;
+  padding: var(--s-32) var(--s-16);
+}
+
+/* адаптив — как у тебя было */
+@media (max-width: 900px) {
+  .team .card {
+    flex-basis: calc((100% - 24px) / 2);
+  }
+}
+@media (max-width: 600px) {
+  .team .card {
+    flex-basis: 100%;
   }
 }
